@@ -1,10 +1,11 @@
 import React from "react";
 import Image from "next/image";
+import { PiShoppingCart } from "react-icons/pi";
 
 const Featured = () => {
   return (
     <div className="font-[sans-serif] mx-auto lg:max-w-7xl w-full px-4 mb-24">
-      <h2 className="text-black text-3xl font-bold mb-10 px-16 ">
+      <h2 className="text-black text-3xl font-bold mb-10 px-16">
         Featured Product
       </h2>
 
@@ -18,10 +19,9 @@ const Featured = () => {
             <Image
               src="/chair5.png"
               alt="Product 1"
-         
-              className="object-cover"
+              className="object-cover absolute inset-0 w-full h-full"
               width={312}
-              height={312}
+              height={340}
             />
           </div>
           <div className="p-4 bg-white flex items-center justify-between">
@@ -31,21 +31,15 @@ const Featured = () => {
               </h3>
               <h4 className="text-lg text-black font-bold mt-1">$120</h4>
             </div>
-            <button className="w-12 h-12 bg-[#F5813F] text-black flex items-center justify-center rounded-md">
-              <Image
-                src="/cart.png"
-                width={22}
-                height={22}
-                alt="Cart Icon"
-                className="object-contain"
-              />
+            <button className="w-12 h-12 bg-[#029FAE] text-black flex items-center justify-center rounded-md">
+            <PiShoppingCart className="text-white  w-8 h-8" />
             </button>
           </div>
         </div>
 
         {/* Card 2 */}
         <div className="bg-gray-100 overflow-hidden rounded-lg cursor-pointer relative">
-        <button className="w-16 h-7 font-normal text-xs bg-[#e66b67] text-white rounded-md absolute top-4 left-4 z-10">
+          <button className="w-16 h-7 font-normal text-xs bg-[#e66b67] text-white rounded-md absolute top-4 left-4 z-10">
             Sales
           </button>
           <div className="relative w-full h-72">
@@ -54,7 +48,7 @@ const Featured = () => {
               alt="Product 2"
               width={312}
               height={312}
-              className="object-cover"
+              className="object-cover absolute inset-0 w-full h-full"
             />
           </div>
           <div className="p-4 bg-white flex items-center justify-between">
@@ -65,13 +59,7 @@ const Featured = () => {
               <h4 className="text-lg text-black font-bold mt-1">$100</h4>
             </div>
             <button className="w-12 h-12 bg-gray-100 text-black flex items-center justify-center rounded-md">
-              <Image
-                src="/buy.png"
-                width={22}
-                height={22}
-                alt="Cart Icon"
-                className="object-contain"
-              />
+            <PiShoppingCart className="text-black w-8 h-8" />
             </button>
           </div>
         </div>
@@ -82,10 +70,9 @@ const Featured = () => {
             <Image
               src="/chair7.png"
               alt="Product 3"
-             width={312}
-             height={312}
-
-              className="object-cover"
+              width={312}
+              height={312}
+              className="object-cover absolute inset-0 w-full h-full"
             />
           </div>
           <div className="p-4 bg-white flex items-center justify-between">
@@ -96,13 +83,7 @@ const Featured = () => {
               <h4 className="text-lg text-black font-bold mt-1">$90</h4>
             </div>
             <button className="w-12 h-12 bg-gray-100 text-black flex items-center justify-center rounded-md">
-              <Image
-                src="/buy.png"
-                width={22}
-                height={22}
-                alt="Cart Icon"
-                className="object-contain"
-              />
+            <PiShoppingCart className="text-black w-8 h-8" />
             </button>
           </div>
         </div>
@@ -115,7 +96,7 @@ const Featured = () => {
               alt="Product 4"
               width={312}
               height={312}
-              className="object-cover"
+              className="object-cover absolute inset-0 w-full h-full"
             />
           </div>
           <div className="p-4 bg-white flex items-center justify-between">
@@ -126,13 +107,7 @@ const Featured = () => {
               <h4 className="text-lg text-black font-bold mt-1">$20</h4>
             </div>
             <button className="w-12 h-12 bg-gray-100 text-black flex items-center justify-center rounded-md">
-              <Image
-                src="/buy.png"
-                width={22}
-                height={22}
-                alt="Cart Icon"
-                className="object-contain"
-              />
+            <PiShoppingCart className="text-black w-8 h-8" />
             </button>
           </div>
         </div>

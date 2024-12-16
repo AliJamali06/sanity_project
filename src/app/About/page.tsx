@@ -1,5 +1,9 @@
 import React from "react";
 import Image from "next/image";
+import { LuSprout } from "react-icons/lu";
+import { IoIosCheckmarkCircleOutline } from "react-icons/io";
+import { TbTruckDelivery } from "react-icons/tb";
+import { BiPurchaseTagAlt } from "react-icons/bi";
 
 const About = () => {
   return (
@@ -32,7 +36,6 @@ const About = () => {
             <Image
               src="/item4.png"
               alt="Dining Experience"
-           
                 objectFit="cover"
                 className="rounded-lg"
                 width={375}
@@ -51,13 +54,8 @@ const About = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
             {/* Card 1 */}
             <div className="bg-[#F9F9F9] rounded-lg p-6 text-center">
-              <Image 
-                src="/bus.png" 
-                width={24} 
-                height={24} 
-                alt="Shipping Icon" 
-                className="mb-4 self-start ml-0"
-              />
+             
+              <TbTruckDelivery className="mb-4 self-start ml-0 w-6 h-6"/>
               <h3 className="text-lg font-bold text-gray-800 mb-2">
                 Next day as standard
               </h3>
@@ -68,13 +66,8 @@ const About = () => {
 
             {/* Card 2 */}
             <div className="bg-[#F9F9F9] rounded-lg p-6 text-center">
-              <Image 
-                src="/outline.png" 
-                width={24} 
-                height={24} 
-                alt="Artisan Icon" 
-                className="mb-4 self-start ml-0"
-              />
+             
+              <IoIosCheckmarkCircleOutline className="mb-4 self-start ml-0 w-6 h-6" />
               <h3 className="text-lg font-bold text-gray-800 mb-2">
                 Made by true artisans
               </h3>
@@ -85,13 +78,8 @@ const About = () => {
 
             {/* Card 3 */}
             <div className="bg-[#F9F9F9] rounded-lg p-6 text-center">
-              <Image 
-                src="/purchase.png" 
-                width={24} 
-                height={24} 
-                alt="Price Tag Icon" 
-                className="mb-4 self-start ml-0"
-              />
+           
+              <BiPurchaseTagAlt className="mb-4 self-start ml-0" />
               <h3 className="text-lg font-bold text-gray-800 mb-2">
                 Unbeatable prices
               </h3>
@@ -102,13 +90,8 @@ const About = () => {
 
             {/* Card 4 */}
             <div className="bg-[#F9F9F9] rounded-lg p-6 text-center">
-              <Image 
-                src="/sprout.png" 
-                width={24} 
-                height={24} 
-                alt="Recycle Icon" 
-                className="mb-4 self-start ml-0"
-              />
+            <LuSprout className="mb-4 self-start ml-0 w-6 h-6" />
+               
               <h3 className="text-lg font-bold text-gray-800 mb-2">
                 Recycled packaging
               </h3>

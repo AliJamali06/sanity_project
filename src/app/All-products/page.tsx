@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { PiShoppingCart } from "react-icons/pi";
 
 const AllProducts = () => {
   return (
@@ -24,13 +25,8 @@ const AllProducts = () => {
                 <h4 className="text-lg text-black font-bold mt-1">$120</h4>
               </div>
               <button className="w-12 h-12 bg-[#029FAE] text-black flex items-center justify-center rounded-md">
-                <Image
-                  src="/cart.png"
-                  width={22}
-                  height={22}
-                  alt="Cart Icon"
-                  className="object-contain"
-                />
+                             <PiShoppingCart className="text-white  w-8 h-8" />
+               
               </button>
             </div>
           </div>
@@ -57,13 +53,8 @@ const AllProducts = () => {
                 <h4 className="text-lg text-black font-bold mt-1">$100</h4>
               </div>
               <button className="w-12 h-12 bg-[#F0F2F3] text-black flex items-center justify-center rounded-md">
-                <Image
-                  src="/buy.png"
-                  width={22}
-                  height={22}
-                  alt="Cart Icon"
-                  className="object-contain"
-                />
+                          <PiShoppingCart className="text-black w-8 h-8" />
+              
               </button>
             </div>
           </div>
@@ -89,13 +80,8 @@ const AllProducts = () => {
                 <h4 className="text-lg text-black font-bold mt-1">$100</h4>
               </div>
               <button className="w-12 h-12 bg-[#F0F2F3] text-black flex items-center justify-center rounded-md">
-                <Image
-                  src="/buy.png"
-                  width={22}
-                  height={22}
-                  alt="Cart Icon"
-                  className="object-contain"
-                />
+                           <PiShoppingCart className="text-black w-8 h-8" />
+               
               </button>
             </div>
           </div>
@@ -121,13 +107,8 @@ const AllProducts = () => {
                 <h4 className="text-lg text-black font-bold mt-1">$100</h4>
               </div>
               <button className="w-12 h-12 bg-[#F0F2F3] text-black flex items-center justify-center rounded-md">
-                <Image
-                  src="/buy.png"
-                  width={22}
-                  height={22}
-                  alt="Cart Icon"
-                  className="object-contain"
-                />
+                          <PiShoppingCart className="text-black w-8 h-8" />
+              
               </button>
             </div>
           </div>
@@ -153,13 +134,8 @@ const AllProducts = () => {
                 <h4 className="text-lg text-black font-bold mt-1">$100</h4>
               </div>
               <button className="w-12 h-12 bg-[#029FAE] text-black flex items-center justify-center rounded-md">
-                <Image
-                  src="/cart.png"
-                  width={22}
-                  height={22}
-                  alt="Cart Icon"
-                  className="object-contain"
-                />
+                          <PiShoppingCart className="text-white w-8 h-8" />
+              
               </button>
             </div>
           </div>
@@ -185,13 +161,8 @@ const AllProducts = () => {
                 <h4 className="text-lg text-black font-bold mt-1">$100</h4>
               </div>
               <button className="w-12 h-12 bg-[#F0F2F3] text-black flex items-center justify-center rounded-md">
-                <Image
-                  src="/buy.png"
-                  width={22}
-                  height={22}
-                  alt="Cart Icon"
-                  className="object-contain"
-                />
+                           <PiShoppingCart className="text-black w-8 h-8" />
+               
               </button>
             </div>
           </div>
@@ -217,13 +188,8 @@ const AllProducts = () => {
                 <h4 className="text-lg text-black font-bold mt-1">$100</h4>
               </div>
               <button className="w-12 h-12 bg-[#F0F2F3] text-black flex items-center justify-center rounded-md">
-                <Image
-                  src="/buy.png"
-                  width={22}
-                  height={22}
-                  alt="Cart Icon"
-                  className="object-contain"
-                />
+                          <PiShoppingCart className="text-black w-8 h-8" />
+              
               </button>
             </div>
           </div>
@@ -249,14 +215,10 @@ const AllProducts = () => {
                 <h4 className="text-lg text-black font-bold mt-1">$100</h4>
               </div>
               <button className="w-12 h-12 bg-[#F0F2F3] text-black flex items-center justify-center rounded-md">
-                <Image
-                  src="/buy.png"
-                  width={22}
-                  height={22}
-                  alt="Cart Icon"
-                  className="object-contain"
-                />
+                          <PiShoppingCart className="text-black w-8 h-8" />
+              
               </button>
+             
             </div>
           </div>
           {/* Card 9 */}
@@ -281,13 +243,8 @@ const AllProducts = () => {
                 <h4 className="text-lg text-black font-bold mt-1">$100</h4>
               </div>
               <button className="w-12 h-12 bg-[#029FAE] text-black flex items-center justify-center rounded-md">
-                <Image
-                  src="/cart.png"
-                  width={22}
-                  height={22}
-                  alt="Cart Icon"
-                  className="object-contain"
-                />
+                           <PiShoppingCart className="text-white w-8 h-8" />
+               
               </button>
             </div>
           </div>
@@ -313,13 +270,8 @@ const AllProducts = () => {
                 <h4 className="text-lg text-black font-bold mt-1">$100</h4>
               </div>
               <button className="w-12 h-12 bg-[#F0F2F3] text-black flex items-center justify-center rounded-md">
-                <Image
-                  src="/buy.png"
-                  width={22}
-                  height={22}
-                  alt="Cart Icon"
-                  className="object-contain"
-                />
+                          <PiShoppingCart className="text-black w-8 h-8" />
+              
               </button>
             </div>
           </div>
@@ -345,13 +297,8 @@ const AllProducts = () => {
                 <h4 className="text-lg text-black font-bold mt-1">$100</h4>
               </div>
               <button className="w-12 h-12 bg-[#F0F2F3] text-black flex items-center justify-center rounded-md">
-                <Image
-                  src="/buy.png"
-                  width={22}
-                  height={22}
-                  alt="Cart Icon"
-                  className="object-contain"
-                />
+                          <PiShoppingCart className="text-black w-8 h-8" />
+              
               </button>
             </div>
           </div>
@@ -377,13 +324,8 @@ const AllProducts = () => {
                 <h4 className="text-lg text-black font-bold mt-1">$100</h4>
               </div>
               <button className="w-12 h-12 bg-[#F0F2F3] text-black flex items-center justify-center rounded-md">
-                <Image
-                  src="/buy.png"
-                  width={22}
-                  height={22}
-                  alt="Cart Icon"
-                  className="object-contain"
-                />
+                           <PiShoppingCart className="text-black w-8 h-8" />
+               
               </button>
             </div>
           </div>

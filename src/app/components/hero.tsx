@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import arrow from "/line.png"  
 
 const Hero = () => {
   return (
@@ -21,14 +20,7 @@ const Hero = () => {
             {/* Button Section with Green Background */}
             <div className="flex items-center gap-2 max-w-[171px] max-h-[52px] bg-[#029FAE] text-white rounded-md cursor-pointer px-6 py-4 justify-center  lg:mt-0">
               <p className="text-base sm:text-lg font-medium">Shop Now</p>
-              <p className="text-base sm:text-lg font-medium">Shop Now</p>
-              <Image
-                src={arrow}
-                alt="Arrow Icon"
-                className="max-w-[24px] max-h-[24px]"
-                width={24}
-                height={24}
-              />
+              <i className="fas fa-arrow-right text-white"></i>
             </div>
           </div>
 
