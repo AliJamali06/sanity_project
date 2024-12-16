@@ -13,7 +13,7 @@ function Faq() {
             </h1>
             <p className="text-sm md:text-base leading-relaxed text-gray-700 text-center max-w-2xl">
               Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text.
+              industry Lorem Ipsum has been the industrys standard dummy text
             </p>
           </div>
 
@@ -28,9 +28,9 @@ function Faq() {
                 What types of chairs do you offer?
               </h3>
               <p className="mt-2 text-sm md:text-base text-gray-700">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
+                Lorem ipsum dolor sit amet consectetur adipisicing elit Nisi
                 quis modi ullam amet debitis libero veritatis enim repellat optio
-                natus eum delectus deserunt.
+                natus eum delectus deserunt
               </p>
             </div>
 
@@ -43,9 +43,9 @@ function Faq() {
                 Do your chairs come with a warranty?
               </h3>
               <p className="mt-2 text-sm md:text-base text-gray-700">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
+                Lorem ipsum dolor sit amet consectetur adipisicing elit Nisi
                 quis modi ullam amet debitis libero veritatis enim repellat optio
-                natus eum delectus deserunt.
+                natus eum delectus deserunt
               </p>
             </div>
 
@@ -58,9 +58,9 @@ function Faq() {
                 Can I try a chair before purchasing?
               </h3>
               <p className="mt-2 text-sm md:text-base text-gray-700">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
+                Lorem ipsum dolor sit amet consectetur adipisicing elit Nisi
                 quis modi ullam amet debitis libero veritatis enim repellat optio
-                natus eum delectus deserunt.
+                natus eum delectus deserunt
               </p>
             </div>
 
@@ -73,9 +73,9 @@ function Faq() {
                 How can we get in touch with you?
               </h3>
               <p className="mt-2 text-sm md:text-base text-gray-700">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
+                Lorem ipsum dolor sit amet consectetur adipisicing elit Nisi
                 quis modi ullam amet debitis libero veritatis enim repellat optio
-                natus eum delectus deserunt.
+                natus eum delectus deserunt
               </p>
             </div>
 
@@ -88,9 +88,9 @@ function Faq() {
                 What will be delivered? And When?
               </h3>
               <p className="mt-2 text-sm md:text-base text-gray-700">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
+                Lorem ipsum dolor sit amet consectetur adipisicing elit Nisi
                 quis modi ullam amet debitis libero veritatis enim repellat optio
-                natus eum delectus deserunt.
+                natus eum delectus deserunt
               </p>
             </div>
 
@@ -103,9 +103,9 @@ function Faq() {
                 How do I clean and maintain my Comforty chair?
               </h3>
               <p className="mt-2 text-sm md:text-base text-gray-700">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
+                Lorem ipsum dolor sit amet consectetur adipisicing elit Nisi
                 quis modi ullam amet debitis libero veritatis enim repellat optio
-                natus eum delectus deserunt.
+                natus eum delectus deserunt
               </p>
             </div>
           </div>
@@ -115,4 +115,4 @@ function Faq() {
   );
 }
 
-export default Faq;
+export default Faq;

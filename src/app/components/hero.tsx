@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const Hero = () => {
   return (
@@ -19,18 +20,22 @@ const Hero = () => {
             {/* Button Section with Green Background */}
             <div className="flex items-center gap-2 max-w-[171px] max-h-[52px] bg-[#029FAE] text-white rounded-md cursor-pointer px-6 py-4 justify-center  lg:mt-0">
               <p className="text-base sm:text-lg font-medium">Shop Now</p>
-              <img
+              <Image
                 src="/line.png"
                 alt="Arrow Icon"
                 className="max-w-[24px] max-h-[24px]"
+                width={24}
+                height={24}
               />
             </div>
           </div>
 
           {/* Right Image */}
           <div className="flex justify-center items-center mt-6 lg:mt-0">
-            <img
+            <Image
               src="/chair image.png"
+              width={496}
+              height={584}
               alt="Chair Product Image"
               className="rounded-lg py-2 object-contain w-full max-w-[400px] sm:max-w-[496px] max-h-[584px]"
             />

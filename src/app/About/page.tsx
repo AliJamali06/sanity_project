@@ -32,10 +32,12 @@ const About = () => {
             <Image
               src="/item4.png"
               alt="Dining Experience"
-              layout="fill"
-              objectFit="cover"
-              className="rounded-lg"
-            />
+           
+                objectFit="cover"
+                className="rounded-lg"
+                width={375}
+                height={375}
+              />
           </div>
         </div>
       </section>
@@ -94,7 +96,7 @@ const About = () => {
                 Unbeatable prices
               </h3>
               <p className="text-sm text-gray-600">
-                For our materials and quality, you won’t find better prices anywhere
+                For our materials and quality, you wont find better prices anywhere
               </p>
             </div>
 
@@ -124,11 +126,11 @@ const About = () => {
         <div className="flex flex-col sm:flex-row gap-4">
           {/* First Product */}
           <div className="text-center w-full sm:w-[630px] h-[375px]">
-            <img
+            <Image
               src="/sofa.png"
               alt="The Poplar suede sofa"
-              width="630"
-              height="375"
+              width={630}
+              height={375}
               className="object-cover mx-auto mb-4 rounded-lg"
             />
             <h3 className="text-lg font-medium">The Poplar suede sofa</h3>
@@ -137,11 +139,11 @@ const About = () => {
 
           {/* Second Product */}
           <div className="text-center w-full sm:w-[305px] h-[375px]">
-            <img
+            <Image
               src="/set.png"
               alt="The Dandy chair"
-              width="305"
-              height="375"
+              width={305}
+              height={375}
               className="object-cover mx-auto mb-4 rounded-lg"
             />
             <h3 className="text-lg font-medium">The Dandy chair</h3>
@@ -150,11 +152,11 @@ const About = () => {
 
           {/* Third Product */}
           <div className="text-center w-full sm:w-[305px] h-[375px]">
-            <img
+            <Image
               src="/Parent.png"
               alt="The Dandy chair"
-              width="305"
-              height="375"
+              width={305}
+              height={375}
               className="object-cover mx-auto mb-4 rounded-lg"
             />
             <h3 className="text-lg font-medium">The Dandy chair</h3>

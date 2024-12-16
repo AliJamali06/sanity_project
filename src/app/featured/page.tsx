@@ -18,8 +18,10 @@ const Featured = () => {
             <Image
               src="/chair5.png"
               alt="Product 1"
-              layout="fill"
+         
               className="object-cover"
+              width={312}
+              height={312}
             />
           </div>
           <div className="p-4 bg-white flex items-center justify-between">
@@ -50,7 +52,8 @@ const Featured = () => {
             <Image
               src="/chair6.png"
               alt="Product 2"
-              layout="fill"
+              width={312}
+              height={312}
               className="object-cover"
             />
           </div>
@@ -79,7 +82,9 @@ const Featured = () => {
             <Image
               src="/chair7.png"
               alt="Product 3"
-              layout="fill"
+             width={312}
+             height={312}
+
               className="object-cover"
             />
           </div>
@@ -108,7 +113,8 @@ const Featured = () => {
             <Image
               src="/chair8.png"
               alt="Product 4"
-              layout="fill"
+              width={312}
+              height={312}
               className="object-cover"
             />
           </div>
@@ -135,4 +141,4 @@ const Featured = () => {
   );
 };
 
-export default Featured;
+export default Featured;
