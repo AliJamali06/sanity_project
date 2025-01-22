@@ -1,71 +1,81 @@
-import React from 'react';
-import Image from 'next/image';
 
-const Categories = () => {
+"use client";
+
+import { client } from "@/sanity/lib/client"; // Point to your Sanity client config
+
+import React, { useEffect, useState } from "react";
+
+// Define the Product type
+interface Product {
+  _id: string;
+  productName: string;
+  price: number;
+  image?: {
+    asset: {
+      url: string;
+    };
+  };
+}
+
+const AllProducts = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        // GROQ Query for Sanity
+        const query = `*[_type == "products"]{
+          _id,
+          productName,
+          price,
+          image {
+            asset -> {
+              url
+            }
+          }
+        }`;
+
+        const data = await client.fetch(query); // Fetching data from Sanity
+        setProducts(data); // Setting fetched data
+      } catch (err) {
+        console.error("Failed to fetch products:", err); // Debugging errors
+        setError("Failed to fetch products. Please try again later.");
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  if (error) {
+    return <div className="text-red-500 text-center">{error}</div>;
+  }
+
   return (
-    <div className="mt-32 py-10">
-      <div className="font-[sans-serif] mx-auto lg:max-w-7xl sm:max-w-full w-full md:max-w-full">
-        <h2 className="text-black text-3xl font-bold mb-10 pl-16">
-          Top Categories
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4 sm:px-10 lg:px-20">
-          {/* Card 1 */}
-          <div className="bg-gray-50 overflow-hidden rounded-lg cursor-pointer relative">
-            <div className="h-[424px] w-full sm:w-[424px] mx-auto relative">
-              <Image
-                src="/stylechair.png"
-                width={424}
-                height={424}
-                alt="Product 1"
-                className="h-full w-full object-cover"
-              />
-            </div>
-            {/* Black background div with opacity */}
-            <div className="absolute bottom-0 left-0 right-0 p-4 bg-black bg-opacity-60">
-              <h3 className="text-lg font-bold text-white">Wing Chair</h3>
-              <p className="text-sm text-gray-400">3,584 Products</p>
+    <div className="max-w-6xl mx-auto px-4 py-8">
+      <h1 className="text-black text-3xl py-4 px-4">All products</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {products.map((product) => (
+          <div key={product._id} className="bg-white shadow-lg rounded-lg p-4">
+            {/* Image Section */}
+            <img
+              src={product.image?.asset?.url || "/placeholder.jpg"} // Use a fallback image
+              alt={product.productName}
+              className="w-full h-48 object-cover rounded"
+            />
+            {/* Product Details */}
+            <div className="mt-4">
+              <h2 className="text-lg font-bold">{product.productName}</h2>
+              <p className="text-gray-700">${product.price}</p>
             </div>
           </div>
-
-          {/* Card 2 */}
-          <div className="bg-gray-50 overflow-hidden rounded-lg cursor-pointer relative">
-            <div className="h-[424px] w-full sm:w-[424px] mx-auto">
-              <Image
-                src="/stylechair2.png"
-                width={424}
-                height={424}
-                alt="Product 2"
-                className="h-full w-full object-cover"
-              />
-            </div>
-            {/* Black background div with opacity */}
-            <div className="absolute bottom-0 left-0 right-0 p-4 bg-black bg-opacity-60 text-white">
-              <h3 className="text-lg font-bold text-white">Wooden Chair</h3>
-              <p className="text-sm text-gray-500">157 Products</p>
-            </div>
-          </div>
-
-          {/* Card 3 */}
-          <div className="bg-gray-50 overflow-hidden rounded-lg cursor-pointer relative">
-            <div className="h-[424px] w-full sm:w-[424px] mx-auto">
-              <Image
-                src="/stylechair3.png"
-                width={424}
-                height={424}
-                alt="Product 3"
-                className="h-full w-full object-cover"
-              />
-            </div>
-            {/* Black background div with opacity */}
-            <div className="absolute bottom-0 left-0 right-0 p-4 bg-black bg-opacity-60 text-white">
-              <h3 className="text-lg font-bold text-white">Desk Chair</h3>
-              <p className="text-sm text-gray-500">154 Products</p>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
-}
+};
 
-export default Categories;
+export default AllProducts;
+
+
+
