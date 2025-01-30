@@ -96,7 +96,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="text-gray-800 font-semibold text-xl">
-            <Link href="/product2" onClick={closeMobileMenu}>
+            <Link href="/productpage" onClick={closeMobileMenu}>
               Shop
             </Link>
           </li>
@@ -130,13 +130,13 @@ const Navbar = () => {
             <Link href="/">Home</Link>
           </li>
           <li className="text-gray-800 font-semibold text-sm">
-            <Link href="/product2">Shop</Link>
+            <Link href="/productpage">Shop</Link>
           </li>
           <li className="text-gray-800 font-semibold text-sm">
             <Link href="/all-products">Products</Link>
           </li>
           <li className="text-gray-800 font-semibold text-sm">
-            <Link href="/Pages">Pages</Link>
+            <Link href="/product2">Pages</Link>
           </li>
           <li className="text-gray-800 font-semibold text-sm">
             <Link href="/About">About</Link>

@@ -1,5 +1,7 @@
 import { groq } from "next-sanity";
 
+// Fetch all products
+export const allProducts = groq`*[_type == "product"]`;
 
-export const allProducts = groq `*[_type == "products"]`;
-export const four = groq `*[_type == "products] [0..3]`;
+// Fetch the first four products
+export const four = groq`*[_type == "product"][0..3]`;

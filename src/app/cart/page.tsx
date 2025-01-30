@@ -1,96 +1,127 @@
-import Image from 'next/image';
-import React from 'react';
-import { RiDeleteBin5Line } from 'react-icons/ri';
-import { FaRegHeart } from 'react-icons/fa';
+"use client";
+import { useRouter } from "next/navigation";
+import { useCart } from "../context/CartContext";
+import { CartItem } from "../context/CartContext"; // Only import CartItem
+import { client } from "@/sanity/lib/client"; // Import your sanity client
+import imageUrlBuilder from "@sanity/image-url";
 
-const Cart = () => {
+// Initialize Sanity Image Builder
+const builder = imageUrlBuilder(client);
+const urlFor = (source: string) => builder.image(source).url();
+
+const CartPage = () => {
+  const { cartItems, removeFromCart } = useCart();
+  const router = useRouter();
+
+  // Calculate total price from cart items
+  const calculateTotal = (): string => {
+    return cartItems
+      .reduce((total, item: CartItem) => total + item.price * item.quantity, 0)
+      .toFixed(2);
+  };
+
+  if (cartItems.length === 0) {
+    return (
+      <div style={{ textAlign: "center", marginTop: "50px" }}>
+        <p>Your cart is empty. Add some products!</p>
+        <button
+          onClick={() => router.push("/productpage")}
+          style={{
+            padding: "10px 20px",
+            marginTop: "20px",
+            backgroundColor: "#007bff",
+            color: "#fff",
+            border: "none",
+            borderRadius: "8px",
+            cursor: "pointer",
+          }}
+        >
+          Shop Now
+        </button>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex flex-wrap md:flex-nowrap justify-between p-6 font-sans gap-2">
-      
-      {/* Bag Section */}
-      <div className="w-full md:w-3/5">
-        <h2 className="text-[22px] leading-[33px] font-medium mb-4">Bag</h2>
-
-        {/* Static Cart Item 1 */}
-        <div className="flex items-center mb-4 border-b border-gray-300 pb-4">
-          <Image
-            src="/item1.png"
-            alt="Library Stool Chair"
-            width={150}
-            height={150}
-            className="mr-4"
-          />
-          <div className="flex-1">
-            <div className="flex justify-between items-center">
-              <h4 className="text-lg font-semibold">Library Stool Chair</h4>
-              <p className="text-sm font-bold">MRP: <span className="ml-2">$98</span></p>
-            </div>
-            <p className="text-sm flex items-center space-x-6 mt-2">
-              <span className='text-[#757575]'>Size: L</span>
-              <span className='text-[#757575]'>Quantity: 1</span>
-            </p>
-            <div className="flex items-center space-x-4 mt-4">
-              <RiDeleteBin5Line className="w-6 h-6 text-black cursor-pointer" />
-              <FaRegHeart className="w-6 h-6 text-black cursor-pointer" />
-            </div>
-          </div>
-        </div>
-
-        {/* Static Cart Item 2 */}
-        <div className="flex items-center mb-4 border-b border-gray-300 pb-4">
-          <Image
-            src="/item3.png"
-            alt="Library Stool Chair"
-            width={150}
-            height={150}
-            className="mr-4"
-          />
-          <div className="flex-1">
-            <div className="flex justify-between items-center">
-              <h4 className="text-lg font-semibold">Library Stool Chair</h4>
-              <p className="text-sm font-bold">MRP: <span className="ml-2">$99</span></p>
-            </div>
-            <p className="text-sm flex items-center space-x-6 mt-2">
-              <span className='text-[#757575]'>Size: L</span>
-              <span className='text-[#757575]'>Quantity: 1</span>
-            </p>
-            <div className="flex items-center space-x-4 mt-4">
-              <RiDeleteBin5Line className="w-6 h-6 text-black cursor-pointer" />
-              <FaRegHeart className="w-6 h-6 text-black cursor-pointer" />
+    <div style={{ display: "flex", gap: "20px", padding: "20px" }}>
+      <div style={{ flex: 3 }}>
+        <h1 style={{ textAlign: "center", marginBottom: "20px" }}>Your Cart</h1>
+        {cartItems.map((item: CartItem) => (
+          <div key={item._id} style={{ marginBottom: "20px", display: "flex", alignItems: "center" }}>
+            {/* Ensure both _ref and _type are defined for image */}
+            <img
+              src={item.image?.asset?._ref ? urlFor(item.image.asset._ref) : "/placeholder.jpg"}
+              alt={item.productName}
+              style={{ width: "100px", height: "100px", objectFit: "cover", marginRight: "20px" }}
+            />
+            <div>
+              <p>{item.productName} (x{item.quantity}): ${item.price * item.quantity}</p>
+              <button
+                onClick={() => removeFromCart(item._id)}
+                style={{
+                  padding: "5px 10px",
+                  backgroundColor: "#ff3b3b",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                }}
+              >
+                Remove
+              </button>
             </div>
           </div>
-        </div>
+        ))}
       </div>
 
-      {/* Summary Section */}
-      <div className="w-full md:w-[350px] p-6 rounded-lg md:ml-4 bg-white">
-      <h3 className="text-[21px] leading-[33px] text-[#111111] font-medium mb-4">Summary</h3>
-        
-        <div className="flex justify-between mb-2">
-          <p className="text-[15px] leading-[28px] font-normal text-[#111111]">Subtotal</p>
-          <p className="text-sm font-bold">$198</p>
-        </div>
-        
-        <div className="flex justify-between pb-4">
-          <p className="text-[15px] leading-[28px] font-normal text-[#111111]">Estimated Delivery & Handling</p>
-          <p className="text-sm font-bold">Free</p>
-        </div>
-
-        <div className="border-t border-b border-gray-300 py-4 mt-4">
-          <div className="flex justify-between">
-            <h4 className="text-[14px] leading-[28px] text-[#111111] font-normal">Total</h4>
-            <h4 className="text-lg font-bold">$198</h4>
-          </div>
-        </div>
-
+      <div
+        style={{
+          flex: 1,
+          border: "1px solid #ccc",
+          borderRadius: "8px",
+          padding: "20px",
+          backgroundColor: "#f9f9f9",
+        }}
+      >
+        <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Order Summary</h2>
+        <ul style={{ listStyleType: "none", padding: "0" }}>
+          {cartItems.map((item: CartItem) => (
+            <li key={item._id} style={{ marginBottom: "10px" }}>
+              <p>{item.productName} (x{item.quantity}): ${item.price * item.quantity}</p>
+            </li>
+          ))}
+        </ul>
+        <p style={{ fontWeight: "bold" }}>Total Price: ${calculateTotal()}</p>
         <button
-          className="mt-6 px-6 py-3 bg-[#029FAE] text-white font-semibold rounded w-full h-[60px]"
+          style={{
+            padding: "10px 20px",
+            backgroundColor: "#4caf50",
+            color: "#fff",
+            border: "none",
+            borderRadius: "8px",
+            cursor: "pointer",
+            marginTop: "20px",
+          }}
         >
-          Member Checkout
+          Proceed to Checkout
+        </button>
+        <button
+          onClick={() => router.push("/productpage")}
+          style={{
+            padding: "10px 20px",
+            backgroundColor: "#007bff",
+            color: "#fff",
+            border: "none",
+            borderRadius: "8px",
+            cursor: "pointer",
+            marginTop: "20px",
+          }}
+        >
+          Continue Shopping
         </button>
       </div>
     </div>
   );
 };
 
-export default Cart;
+export default CartPage;
