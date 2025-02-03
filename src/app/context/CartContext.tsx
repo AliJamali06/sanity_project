@@ -1,129 +1,63 @@
-// "use client";
-// import { createContext, useState, ReactNode, useContext } from "react";
-// import { Product } from "@/types/product";
 
-// export interface CartItem extends Product {
-//   quantity: number;
-// }
-
-// interface CartContextProps {
-//   cartItems: CartItem[];
-//   addToCart: (item: CartItem) => void;
-//   removeFromCart: (id: string) => void;
-//   clearCart: () => void;
-// }
-
-// const CartContext = createContext<CartContextProps>({
-//   cartItems: [],
-//   addToCart: () => {},
-//   removeFromCart: () => {},
-//   clearCart: () => {},
-// });
-
-// export const CartProvider = ({ children }: { children: ReactNode }) => {
-//   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-
-//   const addToCart = (item: CartItem) => {
-//     setCartItems((prevItems) => {
-//       const existingItem = prevItems.find(
-//         (cartItem) => cartItem._id === item._id
-//       );
-//       if (existingItem) {
-//         return prevItems.map((cartItem) =>
-//           cartItem._id === item._id
-//             ? { ...cartItem, quantity: cartItem.quantity + 1 }
-//             : cartItem
-//         );
-//       }
-//       return [...prevItems, { ...item, quantity: 1 }];
-//     });
-//   };
-
-//   const removeFromCart = (id: string) => {
-//     setCartItems((prevItems) =>
-//       prevItems.filter((cartItem) => cartItem._id !== id)
-//     );
-//   };
-
-//   const clearCart = () => {
-//     setCartItems([]);
-//   };
-
-//   return (
-//     <CartContext.Provider
-//       value={{ cartItems, addToCart, removeFromCart, clearCart }}
-//     >
-//       {children}
-//     </CartContext.Provider>
-//   );
-// };
-
-// export const useCart = () => useContext(CartContext);
 "use client";
-import { createContext, useState, ReactNode, useContext } from "react";
-import { Product } from "@/types/product";
+import { createContext, useContext, useState } from "react";
 
-export interface CartItem extends Product {
+// Define the CartItem type
+export interface CartItem {
+  _id: string;
+  title: string; // Ensure this matches the schema
+  price: number;
   quantity: number;
+  image?: {
+    asset?: {
+      _ref: string;
+    };
+  };
 }
 
-interface CartContextProps {
-  cartItems: CartItem[];
-  addToCart: (item: CartItem) => void;
-  removeFromCart: (id: string) => void;
-  clearCart: () => void;
-  updateQuantity: (id: string, quantity: number) => void; // ✅ Add this line
-}
+const CartContext = createContext<any>(null);
 
-const CartContext = createContext<CartContextProps>({
-  cartItems: [],
-  addToCart: () => {},
-  removeFromCart: () => {},
-  clearCart: () => {},
-  updateQuantity: () => {}, // ✅ Add this line
-});
-
-export const CartProvider = ({ children }: { children: ReactNode }) => {
+export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
+  // Calculate total cart count
+  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+
+  // Function to add an item to the cart
   const addToCart = (item: CartItem) => {
-    setCartItems((prevItems) => {
-      const existingItem = prevItems.find(
-        (cartItem) => cartItem._id === item._id
-      );
+    setCartItems((prev) => {
+      const existingItem = prev.find((i) => i._id === item._id);
       if (existingItem) {
-        return prevItems.map((cartItem) =>
-          cartItem._id === item._id
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
-            : cartItem
+        return prev.map((i) =>
+          i._id === item._id ? { ...i, quantity: i.quantity + 1 } : i
         );
       }
-      return [...prevItems, { ...item, quantity: 1 }];
+      return [...prev, { ...item, quantity: 1 }];
     });
   };
 
-  const removeFromCart = (id: string) => {
-    setCartItems((prevItems) =>
-      prevItems.filter((cartItem) => cartItem._id !== id)
+  // ✅ Function to update quantity
+  const updateQuantity = (id: string, quantity: number) => {
+    if (quantity < 1) return; // Prevent quantity from going below 1
+
+    setCartItems((prev) =>
+      prev.map((item) => (item._id === id ? { ...item, quantity } : item))
     );
   };
 
+  // Function to remove an item from the cart
+  const removeFromCart = (id: string) => {
+    setCartItems((prev) => prev.filter((item) => item._id !== id));
+  };
+
+  // Function to clear the entire cart
   const clearCart = () => {
     setCartItems([]);
   };
 
-  // ✅ New Function to Update Quantity
-  const updateQuantity = (id: string, quantity: number) => {
-    setCartItems((prevItems) =>
-      prevItems.map((cartItem) =>
-        cartItem._id === id ? { ...cartItem, quantity: Math.max(quantity, 1) } : cartItem
-      )
-    );
-  };
-
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, clearCart, updateQuantity }} // ✅ Added updateQuantity here
+      value={{ cartItems, addToCart, removeFromCart, updateQuantity, clearCart, cartCount }}
     >
       {children}
     </CartContext.Provider>

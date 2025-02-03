@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 interface Product {
   _id: string;
-  productName: string;
+  title: string;
   price: number;
   image?: {
     asset: {
@@ -26,7 +26,7 @@ const AllProducts = () => {
       try {
         const query = `*[_type == "products"]{
           _id,
-          productName,
+          title,
           price,
           image {
             asset -> {
@@ -56,11 +56,11 @@ const AllProducts = () => {
           <div key={product._id} className="bg-white shadow-lg rounded-lg p-4">
             <img
               src={product.image?.asset?.url || "/placeholder.jpg"}
-              alt={product.productName}
+              alt={product.title}
               className="w-full h-48 object-cover rounded"
             />
             <div className="mt-4">
-              <h2 className="text-lg font-bold">{product.productName}</h2>
+              <h2 className="text-lg font-bold">{product.title}</h2>
               <p className="text-gray-700">${product.price}</p>
               <Link href={`/productdetails/${product._id}`}>
                 <p className="mt-2 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 block text-center">
