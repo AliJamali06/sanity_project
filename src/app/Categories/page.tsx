@@ -1,7 +1,7 @@
-
 "use client";
 
 import { client } from "@/sanity/lib/client"; // Point to your Sanity client config
+import Image from 'next/image';
 
 import React, { useEffect, useState } from "react";
 
@@ -58,10 +58,12 @@ const AllProducts = () => {
         {products.map((product) => (
           <div key={product._id} className="bg-white shadow-lg rounded-lg p-4">
             {/* Image Section */}
-            <img
-              src={product.image?.asset?.url || "/placeholder.jpg"} // Use a fallback image
+            <Image 
+              src={product.image?.asset?.url || "/placeholder.jpg"}
               alt={product.productName}
-              className="w-full h-48 object-cover rounded"
+              width={300}
+              height={300}
+              className="w-full h-auto object-cover rounded"
             />
             {/* Product Details */}
             <div className="mt-4">

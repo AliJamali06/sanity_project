@@ -6,12 +6,27 @@ import { loadStripe } from '@stripe/stripe-js';
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 interface Product {
+  _id: string;
   name: string;
   price: number;
-  image: string;
+  image: any; // or more specific type from Sanity
+  description?: string;
 }
 
-export default function ProductDetail({ product }: { product: Product }) {
+interface PageProps {
+  params: {
+    id: string;
+  };
+}
+
+export default async function ProductDetail({ params }: PageProps) {
+  // Fetch product data using params.id
+  const product = await getProduct(params.id); // Implement this function
+
+  if (!product) {
+    return <div>Product not found</div>;
+  }
+
   const handleCheckout = async () => {
     try {
       const stripe = await stripePromise;

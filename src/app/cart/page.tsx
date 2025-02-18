@@ -7,6 +7,7 @@ import { client } from "@/sanity/lib/client";
 import imageUrlBuilder from "@sanity/image-url";
 import Link from "next/link";
 import { loadStripe } from '@stripe/stripe-js';
+import Image from 'next/image';
 
 const builder = imageUrlBuilder(client);
 const urlFor = (source: string) => builder.image(source).url();
@@ -28,7 +29,7 @@ const CartPage = () => {
     if (storedCart.length > 0) {
       storedCart.forEach((item: CartItem) => updateQuantity(item._id, item.quantity));
     }
-  }, []);
+  }, [updateQuantity]);
 
   // ✅ Calculate Total Price
   const calculateTotal = (): string => {
@@ -97,10 +98,12 @@ const CartPage = () => {
       {cartItems.map((item: CartItem) => (
         <div key={item._id} className="flex items-center bg-white shadow-md rounded-lg p-4 mb-4">
           {/* Image */}
-          <img
-            src={item.image && item.image.asset?._ref ? urlFor(item.image.asset._ref) : "/placeholder.jpg"}
-            alt={item.title || "No Image Available"}
-            className="w-24 h-24 object-cover rounded-lg"
+          <Image 
+            src={urlFor(item.image).url()}
+            alt={item.name}
+            width={100}
+            height={100}
+            className="w-24 h-24 object-cover rounded-md"
           />
 
           {/* Item Details */}

@@ -1,9 +1,9 @@
-
 "use client"
 import Link from "next/link";
 import { client } from "@/sanity/lib/client";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from 'next/image';
 
 interface Product {
   _id: string;
@@ -54,10 +54,12 @@ const AllProducts = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.map((product) => (
           <div key={product._id} className="bg-white shadow-lg rounded-lg p-4">
-            <img
+            <Image 
               src={product.image?.asset?.url || "/placeholder.jpg"}
               alt={product.productName}
-              className="w-full h-48 object-cover rounded"
+              width={300}
+              height={300}
+              className="w-full h-auto object-cover"
             />
             <div className="mt-4">
               <h2 className="text-lg font-bold">{product.productName}</h2>
