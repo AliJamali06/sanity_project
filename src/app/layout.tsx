@@ -1,12 +1,10 @@
-
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/footer";
 import Navbar from "./components/navbar";
 import { CartProvider } from "../app/context/CartContext";
-
-const inter = Inter({ subsets: ["latin"] });
+import { inter } from './fonts';
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,14 +17,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className={inter.className}>
+      <body>
         <CartProvider>
           <Navbar />
           {children}
           <Footer />
         </CartProvider>
       </body>
-    </html> 
+    </html>
   );
 }

@@ -1,18 +1,22 @@
 import { NextRequest , NextResponse } from "next/server"
+import Stripe from 'stripe';
 
-const stripe = require ( `Stripe`) (process.env.STRIPE_SECRET_KEY);
+if (!process.env.STRIPE_SECRET_KEY) {
+  throw new Error('STRIPE_SECRET_KEY is missing');
+}
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+  apiVersion: '2025-01-27.acacia'
+});
 
 export async function POST(request : NextRequest) {
   try {
     const { amount } = await request.json();
-    const paymentIntnet = await stripe.paymentIntnets.create({
-        amount:amount,
-        currency: "usd",
-        automatic_payment_methods: { enabled: true },
-        
-        
-    })
-     return NextResponse.json({ clientSecret: paymentIntnet.client_secret })
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: Math.round(amount * 100),
+      currency: 'usd',
+    });
+     return NextResponse.json({ clientSecret: paymentIntent.client_secret })
     
 
   ;

@@ -10,7 +10,11 @@ import { loadStripe } from '@stripe/stripe-js';
 import Image from 'next/image';
 
 const builder = imageUrlBuilder(client);
-const urlFor = (source: string) => builder.image(source).url();
+
+function urlFor(source: any) {
+  if (!source) return "/placeholder.jpg";
+  return builder.image(source).url();
+}
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
@@ -99,8 +103,8 @@ const CartPage = () => {
         <div key={item._id} className="flex items-center bg-white shadow-md rounded-lg p-4 mb-4">
           {/* Image */}
           <Image 
-            src={urlFor(item.image).url()}
-            alt={item.name}
+            src={item.image ? urlFor(item.image) : "/placeholder.jpg"}
+            alt={item.title || "Product"}
             width={100}
             height={100}
             className="w-24 h-24 object-cover rounded-md"
